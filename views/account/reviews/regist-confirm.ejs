@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include("../../_share/metadata.ejs") %>
+  <title>Game</title>
+  <%- include("../../_share/stylesheets.ejs") %>
+</head>
+<body>
+<div class="outerframe">
+  <%- include("../../_share/navbar.ejs") %>
+  <main class="container">
+    <div class="border-bottom my-5">
+      <h1>Post Review</h1>
+    </div>
+
+    <div>
+      <form>
+        <input type="hidden" id="gameId" name="gameId" value="<%= steam_appid %>" />
+        <div class="form-group row">
+          <label for="gameName" class="col-sm-2 col-form-label">Game</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="gameName" name="gameName" value="<%= gameName %>" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="visit">Datw</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control" id="visit" name="visit" value="<%= review.visit ? moment(review.visit).format('YYYY/MM/DD') : '' %>"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="score">Score</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control" id="score" name="score" value="<%= review.score %>"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="description">Text</label>
+          <div class="col-sm-10">
+            <textarea readonly class="form-control" id="description" name="description" rows="5"><%= (review.description || '') %></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <input type="submit" class="btn btn-primary" data-method="POST" data-action="/account/reviews/regist/<%= steam_appid %>" value="edit" />
+            <input type="submit" class="btn btn-primary" data-method="POST" data-action="/account/reviews/regist/execute" value="Post" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+  <%- include("../../_share/footer.ejs") %>
+</div>
+<%- include("../../_share/javascripts.ejs") %>
+<script type="text/javascript" src="/public/javascripts/regist.js"></script>
+</body>
+</html>

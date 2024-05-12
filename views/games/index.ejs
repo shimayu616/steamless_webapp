@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../_share/metadata.ejs") %>
+  <title>Shop</title>
+  <%- include("../_share/stylesheets.ejs") %>
+  <link rel="stylesheet" href="/public/stylesheets/shop.css" />
+</head>
+
+<body>
+  <div class="outerframe">
+
+    <%- include("../_share/navbar.ejs") %>
+
+    <main class="container">
+      <div class="border-bottom mt-5 mb-5">
+        <h1 class="display-4"><%= name %></h1>
+        <p class="h3">
+          <span>App ID: <%= steam_appid %></span>
+        </p>
+      </div>
+
+      <div>
+        <img class="img-fluid" src="<%=header_image%>>">
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div>
+            <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-book"></i> About</h2>
+            <table class="table table-bordered">
+              </colgroup>
+              <tr>
+                <th>Name</th>
+                <td><%= name%></td>
+              </tr>
+              <tr>
+                <th>About</th>
+                <td><%=short_description %></td>
+              </tr>
+              <tr>
+                <th>Categories</th>
+                <td><%=categories %></td>
+              </tr>
+              <tr>
+                <th>Genres</th>
+                <td><%=genres %></td>
+              </tr>
+              <tr>
+                <th>Release Date</th>
+                <td><%= release_date%></td>
+              </tr>
+              <tr>
+                <th>Price</th>
+                <td><%= price%></td>
+              </tr>
+              <tr>
+                <th>Required Age</th>
+                <td><%=required_age %></td>
+              </tr>
+              <tr>
+                <th>Average Playtime</th>
+                <td><%= average_playtime%></td>
+              </tr>
+              <tr>
+                <th>Positive Ratings</th>
+                <td><%=positive_ratings %></td>
+              </tr>
+              <tr>
+                <th>Negative Ratings</th>
+                <td><%= negative_ratings%></td>
+              </tr>
+            </table>
+          </div>
+          <div>
+            <div class="position-relative">
+              <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-comments"></i> Review</h2>
+              <div class="position-absolute" style="right:0; top:0;">
+                <a class="btn btn-outline-success" href="/account/reviews/regist/<%= steam_appid %>">POST</a>
+              </div>
+            </div>
+            <div>
+              <% for (var review of reviews) { %>
+              <% review.shop = steam_appid; %>
+              <%- include("./review.ejs", review) %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-heart"></i> Recommendation</h2>
+          <!-- Recommends -->
+        </div>
+      </div>
+    </main>
+
+    <%- include("../_share/footer.ejs") %>
+
+  </div>
+  <%- include("../_share/javascripts.ejs") %>
+</body>
+
+</html>

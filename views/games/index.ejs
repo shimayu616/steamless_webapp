@@ -11,6 +11,7 @@
     .img-fluid
     {
       border-radius: 20px;
+      <!-- width: 100%; -->
     }
   </style>
 </head>
@@ -37,14 +38,25 @@
           <div>
             <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-book"></i> About</h2>
             <table class="table table-bordered">
-              </colgroup>
               <tr>
-                <th>Name</th>
-                <td><%= name%></td>
+                <th>Price</th>
+                <td><%= price%></td>
               </tr>
               <tr>
-                <th>About</th>
+                <th>Description</th>
                 <td><%=short_description %></td>
+              </tr>
+              <tr>
+                <th>Genre</th>
+                <td><%=genres %></td>
+              </tr>
+              <tr>
+                <th>Tags</th>
+                <td><%=categories %></td>
+              </tr>
+              <tr>
+                <th>Release Date</th>
+                <td><%= release_date%></td>
               </tr>
               <tr>
                 <th>Publisher</th>
@@ -55,28 +67,12 @@
                 <td><%=developer %></td>
               </tr>
               <tr>
-                <th>Categories</th>
-                <td><%=categories %></td>
-              </tr>
-              <tr>
-                <th>Genres</th>
-                <td><%=genres %></td>
-              </tr>
-              <tr>
-                <th>Release Date</th>
-                <td><%= release_date%></td>
-              </tr>
-              <tr>
-                <th>Price</th>
-                <td><%= price%></td>
-              </tr>
-              <tr>
                 <th>Required Age</th>
                 <td><%=required_age %></td>
               </tr>
               <tr>
                 <th>Average Playtime</th>
-                <td><%= average_playtime%></td>
+                <td><%= average_playtime%> h</td>
               </tr>
               <tr>
                 <th>Positive Ratings</th>
@@ -90,7 +86,7 @@
           </div>
           <div>
             <div class="position-relative">
-              <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-comments"></i> Review</h2>
+              <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-comments"></i> Reviews</h2>
               <div class="position-absolute" style="right:0; top:0;">
                 <a class="btn btn-outline-success" href="/account/reviews/regist/<%= steam_appid %>">POST</a>
               </div>

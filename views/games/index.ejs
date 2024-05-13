@@ -3,9 +3,16 @@
 
 <head>
   <%- include("../_share/metadata.ejs") %>
-  <title>Shop</title>
+  <title><%= name %></title>
   <%- include("../_share/stylesheets.ejs") %>
   <link rel="stylesheet" href="/public/stylesheets/shop.css" />
+
+  <style>
+    .img-fluid
+    {
+      border-radius: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -38,6 +45,14 @@
               <tr>
                 <th>About</th>
                 <td><%=short_description %></td>
+              </tr>
+              <tr>
+                <th>Publisher</th>
+                <td><%=publisher %></td>
+              </tr>
+              <tr>
+                <th>Developer</th>
+                <td><%=developer %></td>
               </tr>
               <tr>
                 <th>Categories</th>

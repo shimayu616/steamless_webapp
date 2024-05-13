@@ -1,11 +1,18 @@
+<style>
+  .card
+  {
+    border-radius: 20px;
+  }
+</style>
+
 <div class="card">
   <a href="/games/<%= steam_appid %>" class="text-body">
     <img class="card-img-top" src="<%=header_image%>" />
     <div class="card-body">
       <h5 class="card-title"><%= name%></h5>
-      <p class="card-text">GENRES: <%=genres%></p>
-      <p class="cardtext">RELEASE: <%=release_date%></p>
-      <p class="cardtext">PRICE: $<%=price%></p>
+      <p class="card-text">Genre: <%=genres%></p>
+      <p class="cardtext">Release Date: <%=release_date%></p>
+      <p class="cardtext">Price: $<%=price%></p>
     </div>
   </a>
 </div>

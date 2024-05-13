@@ -60,7 +60,7 @@ router.post("/regist/:steam_appid(\\d+)", async (req, res, next) => {
   res.render("./account/reviews/regist-form.ejs", { steam_appid, gameName, review });
 });
 
-router.post("/regist/confirm", (req, res) => {
+router.post("/regist/confirm", (req, res, next) => {
   var error = validateReviewData(req);
   var review = createReviewData(req);
   var { steam_appid, gameName } = req.body;

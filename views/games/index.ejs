@@ -100,8 +100,23 @@
           </div>
         </div>
         <div class="col-md-4">
+            <!-- Inside the col-md-4 div -->
           <h2 class="border-bottom mt-5 mb-5 pb-2"><i class="fa fa-fw fa-heart"></i> Recommendation</h2>
-          <!-- Recommends -->
+          <div>
+            <% for (var game of recommendedGames) { %>
+              <div class="card mb-3">
+                <a href="/games/<%= game.steam_appid %>" class="text-body">
+                  <img class="card-img-top" src="<%= game.header_image %>" />
+                  <div class="card-body">
+                    <h5 class="card-title"><%= game.name %></h5>
+                    <p class="card-text">GENRES: <%= game.genres %></p>
+                    <p class="card-text">RELEASE: <%= game.release_date %></p>
+                    <p class="card-text">PRICE: $<%= game.price %></p>
+                  </div>
+                </a>
+              </div>
+            <% } %>
+          </div>
         </div>
       </div>
     </main>

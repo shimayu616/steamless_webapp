@@ -42,8 +42,8 @@ router.get("/regist/:steam_appid(\\d+)", async (req, res, next) => {
 
   try {
     results = await MySQLClient.executeQuery(
-        await sql("SELECT_GAME_BASIC_BY_ID"),
-        [steam_appid]
+      await sql("SELECT_GAME_BASIC_BY_ID"),
+      [steam_appid]
     );
     game = results[0] || {};
     gameName = game.name;
@@ -54,13 +54,13 @@ router.get("/regist/:steam_appid(\\d+)", async (req, res, next) => {
   }
 });
 
-router.post("/regist/:steam_appid(\\d+)", async (req, res, next) => {
+router.post("/regist/:steam_appid(\\d+)/", async (req, res, next) => {
   var review = createReviewData(req);
   var { steam_appid, gameName } = req.body;
   res.render("./account/reviews/regist-form.ejs", { steam_appid, gameName, review });
 });
 
-router.post("/regist/confirm", (req, res, next) => {
+router.post("/regist/confirm/", (req, res, next) => {
   var error = validateReviewData(req);
   var review = createReviewData(req);
   var { steam_appid, gameName } = req.body;
@@ -96,16 +96,16 @@ router.post("/regist/execute", async (req, res, next) => {
   try {
     transaction = await MySQLClient.beginTransaction();
     transaction.executeQuery(
-        await sql("SELECT_GAME_BY_ID_FOR_UPDATE"),
-        [steam_appid]
+      await sql("SELECT_GAME_BY_ID_FOR_UPDATE"),
+      [steam_appid]
     );
     transaction.executeQuery(
-        await sql("INSERT_GAME_REVIEW"),
-        [steam_appid, userId, review.score, review.visit, review.description]
+      await sql("INSERT_GAME_REVIEW"),
+      [steam_appid, userId, review.score, review.visit, review.description]
     );
     transaction.executeQuery(
-        await sql("UPDATE_GAME_SCORE_BY_ID"),
-        [steam_appid, steam_appid]
+      await sql("UPDATE_GAME_SCORE_BY_ID"),
+      [steam_appid, steam_appid]
     );
     await transaction.commit();
   } catch (err) {

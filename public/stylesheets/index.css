@@ -11,3 +11,31 @@
   bottom: 0;
   left: 0;
 }
+@keyframes lowerAd {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#notification {
+  animation-name: lowerAd;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;      
+  position: fixed;
+  right: 30px;
+  top: 60px;
+  width: 200px;
+  background: linear-gradient(gray, white);
+  box-shadow: 5px 5px;
+  padding: 10px;
+  border-radius: 4px;   
+  transition: all 200ms ease-in-out;  
+}
+
+#notification:hover {
+  transform: scale(1.2, 1.2);
+}

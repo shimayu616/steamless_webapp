@@ -13,7 +13,7 @@ router.get("/:steam_appid", async (req, res, next) => {
       await sql("SELECT_GAME_REVIEW_BY_GAME_ID"),
       [steam_appid]
     ),
-    MySQLClient.executeQuery(await sql("SELECT_GAME_RANDOM"), [2])
+    MySQLClient.executeQuery(await sql("SELECT_GAME_RANDOM"), [5])
   ]).then((results) => {
     var data = results[0][0];
     data.reviews = results[1] || [];

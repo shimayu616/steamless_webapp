@@ -12,6 +12,6 @@ module.exports = {
   QUEUE_LIMIT: process.env.MYSQL_QUEUE_LIMIT ?
     parseInt(process.env.MYSQL_QUEUE_LIMIT) : 0,
   ssl: {
-    ca: fs.readFileSync(path.join(__dirname, "./config/ca-certificate.crt")),
+    ca: fs.readFileSync(path.join(__dirname, "../config/ca-certificate.crt"))
   }
 };

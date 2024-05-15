@@ -1,5 +1,5 @@
 module.exports = {
-  PORT: process.env.PORT || 3000,
+  PORT: process.env.PORT || 80,
   security: {
     SESSION_SECRET: "YOUR-SESSION-SECRET-STRING",
     ACCOUNT_LOCK_WINDOW: 30,

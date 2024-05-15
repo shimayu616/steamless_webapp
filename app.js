@@ -35,7 +35,9 @@ app.use(session({
     port: dbconfig.PORT,
     user: dbconfig.USERNAME,
     password: dbconfig.PASSWORD,
-    database: dbconfig.DATABASE
+    database: dbconfig.DATABASE,
+    ssl: dbconfig.ssl,
+    rejectUnauthorized: true
   }),
   secret: appconfig.security.SESSION_SECRET,
   resave: false,
